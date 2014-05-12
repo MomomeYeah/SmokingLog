@@ -1,0 +1,16 @@
+﻿@using (Html.BeginForm("Create", "Log", FormMethod.Post, new { @class = "form-inline" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.Label("LogDate", new { @class = "sr-only" })
+        @Html.TextBox("LogDate", @ViewBag.NextDate as string, new { @type = "date", @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("CigarettesToday", new { @class = "sr-only" })
+        @Html.TextBox("CigarettesToday", null as string, new { @autofocus = "autofocus", @class = "form-control" })
+    </div>
+
+    <input type="submit" value="Save" class="btn btn-default" />
+}

@@ -1,0 +1,52 @@
+﻿@model PagedList.IPagedList<SmokingLog.Models.Log>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@Html.Partial("_LogStatsPartial")
+
+@Html.Partial("_CreateLogPartial")
+
+<br/>
+
+<table class="table table-hover" id="smokinglog-table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().logDate)
+            </th>
+            <th>
+                <span>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().numberOfCigarettes)
+                </span>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(item => item[i].logDate)
+                </td>
+                <td class="smokinglog-data">
+                    <span class="view">@Html.DisplayFor(item => item[i].numberOfCigarettes)</span>
+                    <span class="edit hidden">@Html.TextBoxFor(item => item[i].numberOfCigarettes, new { @class = "form-control" })</span>
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = Model[i].ID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br/>
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { DisplayLinkToPreviousPage = PagedListDisplayMode.Always, DisplayLinkToNextPage = PagedListDisplayMode.Always })

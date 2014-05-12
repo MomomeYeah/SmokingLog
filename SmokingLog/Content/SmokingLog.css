@@ -1,0 +1,44 @@
+﻿#smokinglog-table {
+    white-space: nowrap;
+}
+
+#smokinglog-table > thead > tr > th > span {
+    padding-left: 12px;
+}
+
+#smokinglog-table > tbody > tr {
+    height: 50px;
+}
+
+#smokinglog-table > tbody > tr > td {
+    vertical-align: middle;
+}
+
+#smokinglog-table > tbody > tr > td.smokinglog-data {
+    width: 100%;
+}
+
+#smokinglog-table > tbody > tr > td.smokinglog-data > span.view {
+    padding-left: 12px;
+}
+
+div.update-failed {
+    width: 150px;
+    z-index: 999999999;
+    position: fixed;
+    top: 25px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.95;
+    display: none;
+    text-align: center;
+}
+
+/* Identical to Bootstrap table success class */
+/* For some reason JQuery UI doesn't want to animate the bootstrap class */
+.update-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}

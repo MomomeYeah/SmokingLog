@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Log in";
+}
+
+<div class="jumbotron">
+    <h1>Smoking Log</h1>
+    <p>
+        Smoking Log is a place to track your journey to quit cigarettes.  Log in using one of the external login providers below to get started!
+    </p>
+    <section id="socialLoginForm">
+        @Html.Partial("_ExternalLoginsListPartial", new { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
+    </section>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
